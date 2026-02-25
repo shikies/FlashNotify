@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 标题区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FlashNotify"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/foreground" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已停止 ○"
+                android:textSize="14sp"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <!-- 主开关卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="闪光灯通知"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/foreground" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收到通知时闪烁闪光灯"
+                        android:textSize="13sp"
+                        android:textColor="@color/muted"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/switch_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:thumbTint="@color/primary"
+                    android:trackTint="@color/primary_alpha" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 权限状态卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="权限状态"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/foreground"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 相机权限 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="相机权限（闪光灯）"
+                        android:textSize="14sp"
+                        android:textColor="@color/foreground" />
+
+                    <TextView
+                        android:id="@+id/tv_perm_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="未授权"
+                        android:textSize="13sp"
+                        android:textColor="@color/orange"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btn_grant_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="授权"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/primary"
+                        android:textColor="@color/white"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp" />
+                </LinearLayout>
+
+                <!-- 通知访问权限 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="通知访问权限"
+                        android:textSize="14sp"
+                        android:textColor="@color/foreground" />
+
+                    <TextView
+                        android:id="@+id/tv_perm_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="未授权"
+                        android:textSize="13sp"
+                        android:textColor="@color/orange"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btn_grant_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="授权"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/primary"
+                        android:textColor="@color/white"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 闪烁设置卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="闪烁设置"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/foreground"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 闪烁次数 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="闪烁次数"
+                        android:textSize="14sp"
+                        android:textColor="@color/foreground" />
+
+                    <!-- ∞ 无限次按钮 -->
+                    <Button
+                        android:id="@+id/btn_flash_count_infinite"
+                        android:layout_width="44dp"
+                        android:layout_height="36dp"
+                        android:text="∞"
+                        android:textSize="16sp"
+                        android:textColor="@color/foreground"
+                        android:backgroundTint="@color/surface"
+                        android:layout_marginEnd="6dp"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="0dp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_flash_count_minus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@android:drawable/ic_input_delete"
+                        android:background="@drawable/btn_round"
+                        android:contentDescription="减少" />
+
+                    <TextView
+                        android:id="@+id/tv_flash_count"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        android:gravity="center" />
+
+                    <ImageButton
+                        android:id="@+id/btn_flash_count_plus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@android:drawable/ic_input_add"
+                        android:background="@drawable/btn_round"
+                        android:contentDescription="增加" />
+                </LinearLayout>
+
+                <!-- 闪烁速度 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="闪烁速度"
+                        android:textSize="14sp"
+                        android:textColor="@color/foreground" />
+
+                    <TextView
+                        android:id="@+id/tv_flash_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="中速"
+                        android:textSize="13sp"
+                        android:textColor="@color/muted"
+                        android:layout_marginEnd="8dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <Button
+                        android:id="@+id/btn_speed_very_fast"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:text="极快"
+                        android:textSize="12sp"
+                        android:textColor="@color/foreground"
+                        android:backgroundTint="@color/surface"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btn_speed_fast"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:text="快速"
+                        android:textSize="12sp"
+                        android:textColor="@color/foreground"
+                        android:backgroundTint="@color/surface"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btn_speed_medium"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:text="中速"
+                        android:textSize="12sp"
+                        android:textColor="@color/foreground"
+                        android:backgroundTint="@color/primary"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btn_speed_slow"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:text="慢速"
+                        android:textSize="12sp"
+                        android:textColor="@color/foreground"
+                        android:backgroundTint="@color/surface" />
+                </LinearLayout>
+
+                <!-- 消息消失后停止 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="消息消失后停止"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/foreground" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="通知被清除时自动停止闪烁"
+                            android:textSize="12sp"
+                            android:textColor="@color/muted"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_stop_on_dismiss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:thumbTint="@color/primary"
+                        android:trackTint="@color/primary_alpha" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 应用选择卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="指定监听应用"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/foreground" />
+
+                    <TextView
+                        android:id="@+id/tv_selected_apps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="监听所有应用通知"
+                        android:textSize="13sp"
+                        android:textColor="@color/muted"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_select_apps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="选择"
+                    android:textSize="13sp"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 测试按钮 -->
+        <Button
+            android:id="@+id/btn_test_flash"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="测试闪光灯"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="使用说明：开启开关后，收到通知时闪光灯将自动闪烁。开启"无限次"后闪烁持续到通知消失或手动停止。首次使用请授予相机权限和通知访问权限。"
+            android:textSize="12sp"
+            android:textColor="@color/muted"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>
